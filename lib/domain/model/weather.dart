@@ -27,6 +27,8 @@ class Weather {
   /// Возвращает [IconData] текущих погодных условий
   IconData? getConditionIcon() => _conditionIcons[condition];
 
+  String? getWeatherCondition() => _weatherConditions[condition];
+
   static const Map<String, IconData> _conditionIcons = {
     'clear': Icons.wb_sunny, // ясно
     'partly-cloudy': Icons.cloud, // малооблачно
@@ -44,5 +46,24 @@ class Weather {
     'thunderstorm': Icons.flash_on, // гроза
     'thunderstorm-with-rain': Icons.flash_on, // дождь с грозой
     'thunderstorm-with-hail': Icons.flash_on, // гроза с градом
+  };
+
+  static const Map<String, String> _weatherConditions = {
+    'clear': 'ясно',
+    'partly-cloudy': 'малооблачно',
+    'cloudy': 'облачно с прояснениями',
+    'overcast': 'пасмурно',
+    'light-rain': 'небольшой дождь',
+    'rain': 'дождь',
+    'heavy-rain': 'сильный дождь',
+    'showers': 'ливень',
+    'wet-snow': 'дождь со снегом',
+    'light-snow': 'небольшой снег',
+    'snow': 'снег',
+    'snow-showers': 'снегопад',
+    'hail': 'град',
+    'thunderstorm': 'гроза',
+    'thunderstorm-with-rain': 'дождь с грозой',
+    'thunderstorm-with-hail': 'гроза с градом',
   };
 }
