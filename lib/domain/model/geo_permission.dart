@@ -1,0 +1,4 @@
+enum GeoPermission{
+  enabled,
+  disabled,
+}
