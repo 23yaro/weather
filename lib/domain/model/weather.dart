@@ -7,6 +7,8 @@ class Weather {
     required this.feelsLike,
     required this.windSpeed,
     required this.humidity,
+    required this.date,
+    required this.conditionIcon,
   });
 
   /// Температура
@@ -24,46 +26,9 @@ class Weather {
   /// Влажность
   final int humidity;
 
-  /// Возвращает [IconData] текущих погодных условий
-  IconData? getConditionIcon() => _conditionIcons[condition];
+  /// Время запроса погоды
+  final DateTime date;
 
-  String? getWeatherCondition() => _weatherConditions[condition];
-
-  static const Map<String, IconData> _conditionIcons = {
-    'clear': Icons.wb_sunny, // ясно
-    'partly-cloudy': Icons.cloud, // малооблачно
-    'cloudy': Icons.cloud, // облачно с прояснениями
-    'overcast': Icons.cloud_queue, // пасмурно
-    'light-rain': Icons.grain, // небольшой дождь
-    'rain': Icons.beach_access, // дождь
-    'heavy-rain': Icons.grain, // сильный дождь
-    'showers': Icons.opacity, // ливень
-    'wet-snow': Icons.ac_unit, // дождь со снегом
-    'light-snow': Icons.ac_unit, // небольшой снег
-    'snow': Icons.ac_unit, // снег
-    'snow-showers': Icons.ac_unit, // снегопад
-    'hail': Icons.ac_unit, // град
-    'thunderstorm': Icons.flash_on, // гроза
-    'thunderstorm-with-rain': Icons.flash_on, // дождь с грозой
-    'thunderstorm-with-hail': Icons.flash_on, // гроза с градом
-  };
-
-  static const Map<String, String> _weatherConditions = {
-    'clear': 'ясно',
-    'partly-cloudy': 'малооблачно',
-    'cloudy': 'облачно с прояснениями',
-    'overcast': 'пасмурно',
-    'light-rain': 'небольшой дождь',
-    'rain': 'дождь',
-    'heavy-rain': 'сильный дождь',
-    'showers': 'ливень',
-    'wet-snow': 'дождь со снегом',
-    'light-snow': 'небольшой снег',
-    'snow': 'снег',
-    'snow-showers': 'снегопад',
-    'hail': 'град',
-    'thunderstorm': 'гроза',
-    'thunderstorm-with-rain': 'дождь с грозой',
-    'thunderstorm-with-hail': 'гроза с градом',
-  };
+  /// Иконка погодного описания
+  final Icon conditionIcon;
 }
