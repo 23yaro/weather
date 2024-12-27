@@ -53,22 +53,22 @@ class WeatherMapper {
   };
 
   static const Map<String, String> _weatherConditions = {
-    'clear': 'ясно',
-    'partly-cloudy': 'малооблачно',
-    'cloudy': 'облачно с прояснениями',
-    'overcast': 'пасмурно',
-    'light-rain': 'небольшой дождь',
-    'rain': 'дождь',
-    'heavy-rain': 'сильный дождь',
-    'showers': 'ливень',
-    'wet-snow': 'дождь со снегом',
-    'light-snow': 'небольшой снег',
-    'snow': 'снег',
-    'snow-showers': 'снегопад',
-    'hail': 'град',
-    'thunderstorm': 'гроза',
-    'thunderstorm-with-rain': 'дождь с грозой',
-    'thunderstorm-with-hail': 'гроза с градом',
+    'clear': 'Ясно',
+    'partly-cloudy': 'Малооблачно',
+    'cloudy': 'Облачно с прояснениями',
+    'overcast': 'Пасмурно',
+    'light-rain': 'Небольшой дождь',
+    'rain': 'Дождь',
+    'heavy-rain': 'Сильный дождь',
+    'showers': 'Ливень',
+    'wet-snow': 'Дождь со снегом',
+    'light-snow': 'Небольшой снег',
+    'snow': 'Снег',
+    'snow-showers': 'Снегопад',
+    'hail': 'Град',
+    'thunderstorm': 'Гроза',
+    'thunderstorm-with-rain': 'Дождь с грозой',
+    'thunderstorm-with-hail': 'Гроза с градом',
   };
 
   /// Определяем денб сейчас или ночь, с api информация такая не приходит*
