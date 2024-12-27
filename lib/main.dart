@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final weatherUseCase = GetIt.instance<WeatherUseCase>();
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
