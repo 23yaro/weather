@@ -5,7 +5,7 @@ class GeoPermissionMapper {
   static GeoPermission fromDTO(LocationPermission locationPermission) {
     return switch (locationPermission) {
       LocationPermission.denied => GeoPermission.denied,
-      LocationPermission.deniedForever => GeoPermission.denied,
+      LocationPermission.deniedForever => GeoPermission.alwaysDenied,
       LocationPermission.whileInUse => GeoPermission.accepted,
       LocationPermission.always => GeoPermission.accepted,
       LocationPermission.unableToDetermine => GeoPermission.denied,

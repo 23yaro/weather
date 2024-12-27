@@ -1,20 +1,20 @@
 import 'package:weather/data/api/api.dart';
 import 'package:weather/data/mapper/mapper.dart';
 import 'package:weather/domain/model/models.dart';
-import 'package:weather/domain/repository/i_weather_repository.dart';
+import 'package:weather/domain/repository/weather_repository.dart';
 
-class WeatherRepository implements IWeatherRepository {
-  const WeatherRepository({
+class WeatherRepositoryImpl implements WeatherRepository {
+  const WeatherRepositoryImpl({
     required LocationApi locationService,
     required PermissionApi permissionService,
     required WeatherApi weatherService,
-  })  : _permissionService = permissionService,
-        _locationService = locationService,
-        _weatherService = weatherService;
+  })  : _permissionApi = permissionService,
+        _locationApi = locationService,
+        _weatherApi = weatherService;
 
-  final WeatherApi _weatherService;
-  final LocationApi _locationService;
-  final PermissionApi _permissionService;
+  final WeatherApi _weatherApi;
+  final LocationApi _locationApi;
+  final PermissionApi _permissionApi;
 
   @override
   Future<Weather> getWeather({
@@ -22,7 +22,7 @@ class WeatherRepository implements IWeatherRepository {
     required double longitude,
   }) async {
     return WeatherMapper.fromDTO(
-      await _weatherService.getWeather(
+      await _weatherApi.getWeather(
         latitude: latitude,
         longitude: longitude,
       ),
@@ -30,17 +30,19 @@ class WeatherRepository implements IWeatherRepository {
   }
 
   @override
-  Future<GeoPermission> getGeoPermission() async{
-    return GeoPermissionMapper.fromDTO(await _permissionService.getGeoPermission());
+  Future<GeoPermission> getGeoPermission() async {
+    return GeoPermissionMapper.fromDTO(
+      await _permissionApi.getGeoPermission(),
+    );
   }
 
   @override
   Future<bool> isLocationEnabled() {
-    return _permissionService.isLocationEnabled();
+    return _permissionApi.isLocationEnabled();
   }
 
   @override
   Future<Location> getLocation() async {
-    return LocationMapper.fromDTO(await _locationService.getLocation());
+    return LocationMapper.fromDTO(await _locationApi.getLocation());
   }
 }

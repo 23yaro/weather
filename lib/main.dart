@@ -6,7 +6,7 @@ import 'package:weather/domain/domain.dart';
 import 'package:weather/domain/usecase/weather_usecase.dart';
 import 'package:weather/presentation/home_view.dart';
 
-void main() {
+Future<void> main() async {
   setupGetIt();
   runApp(MyApp());
 }

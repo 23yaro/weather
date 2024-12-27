@@ -2,7 +2,7 @@ import 'package:weather/domain/model/geo_permission.dart';
 import 'package:weather/domain/model/location/location.dart';
 import 'package:weather/domain/model/weather/weather.dart';
 
-abstract class IWeatherRepository {
+abstract class WeatherRepository {
   /// Получить модель погоды
   ///
   /// Возвращвет [Weather]

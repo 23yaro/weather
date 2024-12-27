@@ -3,9 +3,7 @@ import 'package:weather/data/api/location_api/location_api.dart';
 import 'package:weather/data/model/location_dto/location_dto.dart';
 
 class LocationApiImpl implements LocationApi {
-  const LocationApiImpl({required this.geolocator});
-
-  final Geolocator geolocator;
+  const LocationApiImpl();
 
   @override
   Future<LocationDTO> getLocation() async {

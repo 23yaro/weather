@@ -15,12 +15,15 @@ class HomeView extends StatelessWidget {
           'Не удалось получить геолокацию, отключите VPN или проверте включена ли геолокация',
         HomeState.locationDisabled => 'Включите геолокацию',
         HomeState.permissionDenied => 'Нам нужен доступ к геолокации',
+        HomeState.permissionAlwaysDenied =>
+          'Вы запретили доступ к геолокации, включите его в настройках вашего устройства',
         _ => 'Произошла неизвестная ошибка',
       };
 
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<HomeVM>();
+
     Future<void> onPressed() async {
       await vm.getWeather();
       if (vm.state != HomeState.loaded) {

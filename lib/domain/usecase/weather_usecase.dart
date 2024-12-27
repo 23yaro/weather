@@ -2,16 +2,16 @@ import 'package:logger/logger.dart';
 import 'package:weather/domain/model/geo_permission.dart';
 import 'package:weather/domain/model/location/location.dart';
 import 'package:weather/domain/model/weather/weather.dart';
-import 'package:weather/domain/repository/i_weather_repository.dart';
+import 'package:weather/domain/repository/weather_repository.dart';
 
 class WeatherUseCase {
   const WeatherUseCase({
-    required IWeatherRepository weatherRepository,
+    required WeatherRepository weatherRepository,
     required Logger logger,
   })  : _logger = logger,
         _weatherRepository = weatherRepository;
 
-  final IWeatherRepository _weatherRepository;
+  final WeatherRepository _weatherRepository;
   final Logger _logger;
 
   Future<Weather> callGetWeather({

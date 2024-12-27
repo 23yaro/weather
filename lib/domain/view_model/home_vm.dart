@@ -16,6 +16,13 @@ class HomeVM extends ChangeNotifier {
     state = HomeState.load;
     notifyListeners();
 
+    final isLocationEnabled = await _weatherUseCase.callIsLocationEnabled();
+    if (!isLocationEnabled) {
+      state = HomeState.locationDisabled;
+      notifyListeners();
+      return;
+    }
+
     final permission = await _weatherUseCase.callGetGeoPermission();
     if (permission == GeoPermission.denied) {
       state = HomeState.permissionDenied;
@@ -23,9 +30,8 @@ class HomeVM extends ChangeNotifier {
       return;
     }
 
-    final isLocationEnabled = await _weatherUseCase.callIsLocationEnabled();
-    if (!isLocationEnabled) {
-      state = HomeState.locationDisabled;
+    if (permission == GeoPermission.alwaysDenied) {
+      state = HomeState.permissionAlwaysDenied;
       notifyListeners();
       return;
     }
@@ -52,6 +58,7 @@ enum HomeState {
   init,
   load,
   permissionDenied,
+  permissionAlwaysDenied,
   locationDisabled,
   loadingError,
   internetDisabled,
