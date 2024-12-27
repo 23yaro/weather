@@ -10,7 +10,7 @@ class HomeVM extends ChangeNotifier {
 
   HomeState state = HomeState.init;
 
-  late Weather weather;
+  Weather? weather;
 
   Future<void> getWeather() async {
     state = HomeState.load;
@@ -40,7 +40,7 @@ class HomeVM extends ChangeNotifier {
     try {
       final weather = await _weatherUseCase.callGetWeather(location: location);
       this.weather = weather;
-      state = HomeState.good;
+      state = HomeState.loaded;
     } catch (_) {
       state = HomeState.internetDisabled;
     }
@@ -55,5 +55,5 @@ enum HomeState {
   locationDisabled,
   loadingError,
   internetDisabled,
-  good,
+  loaded,
 }

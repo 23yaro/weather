@@ -7,24 +7,27 @@ import 'package:weather/presentation/weather_widget.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  static const Map<HomeState, String> _alertDialogString = {
-    HomeState.internetDisabled: 'Отсутствует подключение к интернету',
-    HomeState.loadingError:
-        'Не удалось получить геолокацию, отключите VPN или проверте включена ли геолокация',
-    HomeState.locationDisabled: 'Включите геолокацию',
-    HomeState.permissionDenied: 'Нам нужен доступ к геолокации',
-  };
+  static const Map<HomeState, String> _alertDialogString = {};
+
+  String getAlertDialogString(HomeState homeState) => switch (homeState) {
+        HomeState.internetDisabled => 'Отсутствует подключение к интернету',
+        HomeState.loadingError =>
+          'Не удалось получить геолокацию, отключите VPN или проверте включена ли геолокация',
+        HomeState.locationDisabled => 'Включите геолокацию',
+        HomeState.permissionDenied => 'Нам нужен доступ к геолокации',
+        _ => 'Произошла неизвестная ошибка',
+      };
 
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<HomeVM>();
     Future<void> onPressed() async {
       await vm.getWeather();
-      if (vm.state != HomeState.good) {
+      if (vm.state != HomeState.loaded) {
         await showDialog(
           context: context,
           builder: (_) =>
-              HomeAlertDialogWidget(text: _alertDialogString[vm.state]!),
+              HomeAlertDialogWidget(text: getAlertDialogString(vm.state)),
         );
       }
     }
@@ -39,7 +42,7 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (vm.state == HomeState.load) CircularProgressIndicator(),
-            if (vm.state == HomeState.good) WeatherWidget(weather: vm.weather),
+            if (vm.weather != null) WeatherWidget(weather: vm.weather!),
             const SizedBox(height: 50),
             ElevatedButton(
               onPressed: onPressed,

@@ -7,69 +7,70 @@ class WeatherMapper {
   static Weather fromDTO(WeatherDTO weatherDTO) {
     return Weather(
       temp: weatherDTO.temp,
-      condition: _weatherConditions[weatherDTO.condition] ?? _getCurrentTime(),
+      condition: _getWeatherConditions(weatherDTO.condition),
       feelsLike: weatherDTO.feelsLike,
       windSpeed: weatherDTO.windSpeed,
       humidity: weatherDTO.humidity,
       date: DateTime.now(),
-      conditionIcon:
-          _conditionIcons[weatherDTO.condition] ?? _getCurrentTimeIcon(),
+      conditionIcon: _getConditionIcons(weatherDTO.condition),
     );
   }
 
-  static final Map<String, Icon> _conditionIcons = {
-    'clear': WeatherIcons.clear,
-    // ясно
-    'partly-cloudy': WeatherIcons.partlyCloudy,
-    // малооблачно
-    'cloudy': WeatherIcons.cloudy,
-    // облачно с прояснениями
-    'overcast': WeatherIcons.overcast,
-    // пасмурно
-    'light-rain': WeatherIcons.lightRain,
-    // небольшой дождь
-    'rain': WeatherIcons.rain,
-    // дождь
-    'heavy-rain': WeatherIcons.heavyRain,
-    // сильный дождь
-    'showers': WeatherIcons.showers,
-    // ливень
-    'wet-snow': WeatherIcons.wetSnow,
-    // дождь со снегом
-    'light-snow': WeatherIcons.lightSnow,
-    // небольшой снег
-    'snow': WeatherIcons.snow,
-    // снег
-    'snow-showers': WeatherIcons.snowShowers,
-    // снегопад
-    'hail': WeatherIcons.hail,
-    // град
-    'thunderstorm': WeatherIcons.thunderstorm,
-    // гроза
-    'thunderstorm-with-rain': WeatherIcons.thunderstormWithRain,
-    // дождь с грозой
-    'thunderstorm-with-hail': WeatherIcons.thunderstormWithHail,
-    // гроза с градом
-  };
+  static Icon _getConditionIcons(String condition) => switch (condition) {
+        'clear' => WeatherIcons.clear,
+        // ясно
+        'partly-cloudy' => WeatherIcons.partlyCloudy,
+        // малооблачно
+        'cloudy' => WeatherIcons.cloudy,
+        // облачно с прояснениями
+        'overcast' => WeatherIcons.overcast,
+        // пасмурно
+        'light-rain' => WeatherIcons.lightRain,
+        // небольшой дождь
+        'rain' => WeatherIcons.rain,
+        // дождь
+        'heavy-rain' => WeatherIcons.heavyRain,
+        // сильный дождь
+        'showers' => WeatherIcons.showers,
+        // ливень
+        'wet-snow' => WeatherIcons.wetSnow,
+        // дождь со снегом
+        'light-snow' => WeatherIcons.lightSnow,
+        // небольшой снег
+        'snow' => WeatherIcons.snow,
+        // снег
+        'snow-showers' => WeatherIcons.snowShowers,
+        // снегопад
+        'hail' => WeatherIcons.hail,
+        // град
+        'thunderstorm' => WeatherIcons.thunderstorm,
+        // гроза
+        'thunderstorm-with-rain' => WeatherIcons.thunderstormWithRain,
+        // дождь с грозой
+        'thunderstorm-with-hail' => WeatherIcons.thunderstormWithHail,
+        // гроза с градом
+        _ => _getCurrentTimeIcon(),
+      };
 
-  static const Map<String, String> _weatherConditions = {
-    'clear': 'Ясно',
-    'partly-cloudy': 'Малооблачно',
-    'cloudy': 'Облачно с прояснениями',
-    'overcast': 'Пасмурно',
-    'light-rain': 'Небольшой дождь',
-    'rain': 'Дождь',
-    'heavy-rain': 'Сильный дождь',
-    'showers': 'Ливень',
-    'wet-snow': 'Дождь со снегом',
-    'light-snow': 'Небольшой снег',
-    'snow': 'Снег',
-    'snow-showers': 'Снегопад',
-    'hail': 'Град',
-    'thunderstorm': 'Гроза',
-    'thunderstorm-with-rain': 'Дождь с грозой',
-    'thunderstorm-with-hail': 'Гроза с градом',
-  };
+  static String _getWeatherConditions(String condition) => switch (condition) {
+        'clear' => 'Ясно',
+        'partly-cloudy' => 'Малооблачно',
+        'cloudy' => 'Облачно с прояснениями',
+        'overcast' => 'Пасмурно',
+        'light-rain' => 'Небольшой дождь',
+        'rain' => 'Дождь',
+        'heavy-rain' => 'Сильный дождь',
+        'showers' => 'Ливень',
+        'wet-snow' => 'Дождь со снегом',
+        'light-snow' => 'Небольшой снег',
+        'snow' => 'Снег',
+        'snow-showers' => 'Снегопад',
+        'hail' => 'Град',
+        'thunderstorm' => 'Гроза',
+        'thunderstorm-with-rain' => 'Дождь с грозой',
+        'thunderstorm-with-hail' => 'Гроза с градом',
+        _ => 'Облачно',
+      };
 
   /// Определяем денб сейчас или ночь, с api информация такая не приходит*
   static Icon _getCurrentTimeIcon() {
