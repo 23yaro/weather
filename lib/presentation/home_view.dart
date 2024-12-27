@@ -44,9 +44,9 @@ class HomeView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (vm.state == HomeState.load) CircularProgressIndicator(),
             if (vm.weather != null) WeatherWidget(weather: vm.weather!),
-            const SizedBox(height: 50),
+            if (vm.state != HomeState.load) SizedBox(height: 36),
+            if (vm.state == HomeState.load) CircularProgressIndicator(),
             ElevatedButton(
               onPressed: onPressed,
               child: const Text('Узнать погоду!'),
