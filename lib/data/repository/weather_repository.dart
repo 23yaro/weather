@@ -5,16 +5,16 @@ import 'package:weather/domain/repository/i_weather_repository.dart';
 
 class WeatherRepository implements IWeatherRepository {
   const WeatherRepository({
-    required ILocationApi locationService,
-    required IPermissionApi permissionService,
-    required IWeatherApi weatherService,
+    required LocationApi locationService,
+    required PermissionApi permissionService,
+    required WeatherApi weatherService,
   })  : _permissionService = permissionService,
         _locationService = locationService,
         _weatherService = weatherService;
 
-  final IWeatherApi _weatherService;
-  final ILocationApi _locationService;
-  final IPermissionApi _permissionService;
+  final WeatherApi _weatherService;
+  final LocationApi _locationService;
+  final PermissionApi _permissionService;
 
   @override
   Future<Weather> getWeather({
@@ -30,8 +30,8 @@ class WeatherRepository implements IWeatherRepository {
   }
 
   @override
-  Future<GeoPermission> getGeoPermission() {
-    return _permissionService.getGeoPermission();
+  Future<GeoPermission> getGeoPermission() async{
+    return GeoPermissionMapper.fromDTO(await _permissionService.getGeoPermission());
   }
 
   @override

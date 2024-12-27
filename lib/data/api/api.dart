@@ -1,3 +1,3 @@
-export 'location_api/i_location_api.dart';
-export 'permission_api/i_permission_api.dart';
-export 'weather_api/i_weather_api.dart';
+export 'location_api/location_api.dart';
+export 'permission_api/permission_api.dart';
+export 'weather_api/weather_api.dart';
