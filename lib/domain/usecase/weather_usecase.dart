@@ -14,14 +14,13 @@ class WeatherUseCase {
   final IWeatherRepository _weatherRepository;
   final Logger _logger;
 
-  Future<Weather?> callGetWeather({
-    required double latitude,
-    required double longitude,
+  Future<Weather> callGetWeather({
+    required Location location,
   }) async {
     try {
       final result = await _weatherRepository.getWeather(
-        latitude: latitude,
-        longitude: longitude,
+        latitude: location.latitude,
+        longitude: location.longitude,
       );
       return result;
     } catch (e, stacktrace) {
@@ -37,7 +36,7 @@ class WeatherUseCase {
     } catch (e, stacktrace) {
       _logger.e(e, stackTrace: stacktrace);
     }
-    return GeoPermission.disabled;
+    return GeoPermission.denied;
   }
 
   Future<bool> callIsLocationEnabled() async {
