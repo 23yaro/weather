@@ -8,7 +8,11 @@ class WeatherApiImpl implements WeatherApi {
   static const language = 'ru_RU';
 
   final Dio _dio = Dio(
-    BaseOptions(headers: {'X-Yandex-Weather-Key': accessKey}),
+    BaseOptions(
+      headers: {'X-Yandex-Weather-Key': accessKey},
+      connectTimeout: Duration(seconds: 30),
+      receiveTimeout: Duration(seconds: 30),
+    ),
   );
 
   @override

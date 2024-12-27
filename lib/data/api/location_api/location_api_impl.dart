@@ -7,7 +7,9 @@ class LocationApiImpl implements LocationApi {
 
   @override
   Future<LocationDTO> getLocation() async {
-    final data = await Geolocator.getCurrentPosition();
+    final data = await Geolocator.getCurrentPosition(
+      locationSettings: LocationSettings(timeLimit: Duration(seconds: 30)),
+    );
 
     return LocationDTO(
       latitude: data.latitude,

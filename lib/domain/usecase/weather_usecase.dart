@@ -49,13 +49,13 @@ class WeatherUseCase {
     return false;
   }
 
-  Future<Location?> callGetLocation() async {
+  Future<Location> callGetLocation() async {
     try {
       final result = await _weatherRepository.getLocation();
       return result;
     } catch (e, stacktrace) {
       _logger.e(e, stackTrace: stacktrace);
+      rethrow;
     }
-    return null;
   }
 }

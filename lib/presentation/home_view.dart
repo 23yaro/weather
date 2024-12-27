@@ -11,8 +11,6 @@ class HomeView extends StatelessWidget {
 
   String getAlertDialogString(HomeState homeState) => switch (homeState) {
         HomeState.internetDisabled => 'Отсутствует подключение к интернету',
-        HomeState.loadingError =>
-          'Не удалось получить геолокацию, отключите VPN или проверте включена ли геолокация',
         HomeState.locationDisabled => 'Включите геолокацию',
         HomeState.permissionDenied => 'Нам нужен доступ к геолокации',
         HomeState.permissionAlwaysDenied =>
