@@ -1,6 +1,6 @@
-import 'package:weather/data/api/model/weather_dto/weather_dto.dart';
+import 'package:weather/data/model/weather_dto/weather_dto.dart';
 
-abstract class IWeatherService{
+abstract class IWeatherApi {
   /// Получить текущую погоду
   ///
   /// Возвращвет [Future] c [WeatherDTO]

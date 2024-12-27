@@ -1,6 +1,6 @@
 import 'package:weather/domain/model/geo_permission.dart';
 
-abstract class IPermissionService {
+abstract class IPermissionApi {
   /// Проверяет включено ли местоположение
   ///
   /// Возвращает [Future] типа [bool]

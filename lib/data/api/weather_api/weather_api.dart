@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:weather/data/api/model/weather_dto/weather_dto.dart';
-import 'package:weather/data/api/service/weather_service/i_weather_service.dart';
+import 'package:weather/data/api/weather_api/i_weather_api.dart';
+import 'package:weather/data/model/weather_dto/weather_dto.dart';
 
-class WeatherService implements IWeatherService {
+class WeatherApi implements IWeatherApi {
   static const apiUrl = 'https://api.weather.yandex.ru/v2/forecast';
   static const accessKey = String.fromEnvironment('access_key');
   static const language = 'ru_RU';

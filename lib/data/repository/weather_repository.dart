@@ -1,20 +1,20 @@
-import 'package:weather/data/api/service/services.dart';
-import 'package:weather/data/mapper/mappers.dart';
+import 'package:weather/data/api/api.dart';
+import 'package:weather/data/mapper/mapper.dart';
 import 'package:weather/domain/model/models.dart';
 import 'package:weather/domain/repository/i_weather_repository.dart';
 
 class WeatherRepository implements IWeatherRepository {
   const WeatherRepository({
-    required ILocationService locationService,
-    required IPermissionService permissionService,
-    required IWeatherService weatherService,
+    required ILocationApi locationService,
+    required IPermissionApi permissionService,
+    required IWeatherApi weatherService,
   })  : _permissionService = permissionService,
         _locationService = locationService,
         _weatherService = weatherService;
 
-  final IWeatherService _weatherService;
-  final ILocationService _locationService;
-  final IPermissionService _permissionService;
+  final IWeatherApi _weatherService;
+  final ILocationApi _locationService;
+  final IPermissionApi _permissionService;
 
   @override
   Future<Weather> getWeather({

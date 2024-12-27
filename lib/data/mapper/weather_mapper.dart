@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather/data/api/model/weather_dto/weather_dto.dart';
-import 'package:weather/domain/model/weather.dart';
+import 'package:weather/data/model/weather_dto/weather_dto.dart';
+import 'package:weather/domain/model/weather/weather.dart';
 import 'package:weather/ui/consts/icons.dart';
 
 class WeatherMapper {

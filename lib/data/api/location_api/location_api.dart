@@ -1,9 +1,9 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:weather/data/api/model/location_dto/location_dto.dart';
-import 'package:weather/data/api/service/location_service/i_location_service.dart';
+import 'package:weather/data/api/location_api/i_location_api.dart';
+import 'package:weather/data/model/location_dto/location_dto.dart';
 
-class LocationService implements ILocationService {
-  const LocationService({required this.geolocator});
+class LocationApi implements ILocationApi {
+  const LocationApi({required this.geolocator});
 
   final Geolocator geolocator;
 
